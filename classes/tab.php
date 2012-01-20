@@ -30,7 +30,7 @@ abstract class Tab implements TabInterface {
 		if (($path = \Finder::search('views', $template)) === false) {
 			return false;
 		} else {
-			return \View::forge($path,array_merge($this->get_data(),array('tab'=>$this)));
+			return \View::forge($path,array_merge($this->get_data(),array('tab'=>$this)),false);
 		}
 
 	}

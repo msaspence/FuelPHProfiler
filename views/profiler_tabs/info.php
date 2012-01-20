@@ -7,7 +7,7 @@
 	</div>
 	<div class="search">
 		<h4>Search</h4>
-		<input id="profiler_tab_info_search" />
+		<input id="profiler_tab_info_search" class="search" />
 		<script type="text/javascript">
 		var rows;
 			jQuery("#profiler_tab_info_search").keyup(function() {
@@ -17,8 +17,8 @@
 						.indexOf(m[3].toUpperCase()) >= 0;
 				};
 
-				value = $(this).val();
-				content = $('#profiler_tab_info_phpinfo')
+				value = jQuery(this).val();
+				content = jQuery('#profiler_tab_info_phpinfo')
 				content.find('tr,h3').hide();
 				rows = content.find("tr:Contains('"+value+"')");
 				rows.show();
