@@ -27,6 +27,11 @@ if (jQuery === undefined) {
 
 		var fuel_profiler = $('#fuel_profiler');
 
+		original_padding = $('body').css('padding-bottom').replace(/[^-\d\.]/g, '');
+		new_padding = fuel_profiler.height();
+		console.log(parseInt(original_padding)+parseInt(new_padding));
+		$('body').css('padding-bottom',parseInt(original_padding)+parseInt(new_padding)+20);
+
 		// Resize details
 		calculate_details_height = function() {
 			height = $(window).height();
