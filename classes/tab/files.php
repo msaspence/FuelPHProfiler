@@ -23,13 +23,15 @@ class Files extends Tab
 			$largest = 0;
 
 			foreach($files as $key => $file) {
-				$file_size = filesize($file);
-				$file_list[] = array(
-					'name' => $file,
-					'size' => $file_size
-				);
-				$size += $file_size;
-				if($file_size > $largest) $largest = $file_size;
+				if (file_exists($file)) {
+					$file_size = filesize($file);
+					$file_list[] = array(
+						'name' => $file,
+						'size' => $file_size
+					);
+					$size += $file_size;
+					if($file_size > $largest) $largest = $file_size;
+				}
 			}
 
 			$this->data['size'] = $size;
