@@ -22,9 +22,9 @@ class P {
 		return \Profiler::mark_memory($object, $text);
 	}
 
-	public static function c($text)
+	public static function c($text,$auto_open=false)
 	{
-		return \Profiler::console($text);
+		return \Profiler::console($text,$auto_open);
 	}
 
 	public static function l($type,$text,$time=null)
@@ -40,6 +40,11 @@ class P {
 	public static function sp($text=null)
 	{
 		return \Profiler::stop($text);
+	}
+
+	public static function i($text=null,$auto_open=true)
+	{
+		return \Profiler::inspect($text,$auto_open);
 	}
 
 }

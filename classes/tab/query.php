@@ -14,7 +14,7 @@ class Query extends Tab
 	public function get_data()
 	{
 		return array(
-			'log' => \Profiler::get_queries(),
+			'log' => \Profiler::get_log('query'),
 			'overviews' => array(
 				count($this->get_queries())." Quer".(count($this->get_queries()) == 1 ? "y" : "ies"  ),
 				"Total time: ".\Profiler::get_readable_time($this->get_query_time()),

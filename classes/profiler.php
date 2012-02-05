@@ -24,6 +24,7 @@ class Profiler {
 	static public $query_time = 0;
 	static public $query_count = 0;
 	static public $query;
+	static public $auto_open = false;
 
 	static public $default_tabs = array(
 		'FuelPHProfiler\Tab\Info',
@@ -110,13 +111,24 @@ class Profiler {
 		return $output;
 	}
 
-	public static function console($text)
+	public static function console($text,$auto_open = false)
 	{
-		static::log('console',$text);
+		static::log('console',$text,null,$auto_open);
 	}
 
-	public static function log($type,$text,$time=null)
+	public static function inspect($text,$auto_open = true)
 	{
+		static::log('inspect',$text,null,$auto_open);
+	}
+
+	public static function log($type,$text,$time=null,$auto_open=false)
+	{
+		if ($auto_open === true && is_string(static::$auto_open)) {
+			static::$auto_open = true;
+		} elseif ($auto_open === true) {
+			static::$auto_open = $type;
+		}
+
 		if (is_null($time)) {
 			$time = microtime(true)-FUEL_START_TIME;
 		}

@@ -8,8 +8,10 @@ if (jQuery === undefined) {
 	jQuery.noConflict();
 }
 
+var filters = [];
 
 (function($) {
+
 
 	$().ready(function() {
 
@@ -29,7 +31,7 @@ if (jQuery === undefined) {
 
 		original_padding = $('body').css('padding-bottom').replace(/[^-\d\.]/g, '');
 		new_padding = fuel_profiler.height();
-		console.log(parseInt(original_padding)+parseInt(new_padding));
+
 		$('body').css('padding-bottom',parseInt(original_padding)+parseInt(new_padding)+20);
 
 		// Resize details
@@ -43,17 +45,29 @@ if (jQuery === undefined) {
 			calculate_details_height();
 		});
 
-		var activate_tab = function(tab) {
+		var activate_tab = function(route) {
+
+			route = route.substring(1,route.length);
+			route = route.split("/");
+			tab = "#"+route[0];
 
 			if ($(tab).length) {
-				if ($(tab).hasClass('active') || !fuel_profiler.hasClass('open')) {
-					fuel_profiler.toggleClass('open');
-				}
+				if (route[1] === undefined && filters[route[0]] !== undefined) {
+					window.location.hash = "#"+route[0]+"/"+filters[route[0]];
+				} else {
+					if ($(tab).hasClass('active') || !fuel_profiler.hasClass('open')) {
+						fuel_profiler.addClass('open');
+					}
 
-				$(tab).addClass('active');
-				$(tab).siblings().removeClass('active');
-				$(".tab_content").removeClass('active');
-				$(".tab_content[data-tab="+$(tab).data('tab')+"]").addClass('active');
+					$(tab).addClass('active');
+					$(tab).siblings().removeClass('active');
+					$(".tab_content").removeClass('active');
+					$(".tab_content[data-tab="+$(tab).data('tab')+"]").addClass('active');
+					if (route[1] !== undefined) {
+						filters[route[0]] = route[1];
+						profiler_activate_filter(jQuery(".tab_content[data-tab="+$(tab).data('tab')+"] .log table"),route[1],jQuery(".tab_content[data-tab="+$(tab).data('tab')+"] ."+route[1]))
+					}
+				}
 			} else {
 				fuel_profiler.toggleClass('open');
 			}
@@ -69,11 +83,11 @@ if (jQuery === undefined) {
 		});
 
 		if (window.location.hash !== "") {
-			activate_tab($(window.location.hash));
+			activate_tab(window.location.hash);
 		}
 
 		$(window).bind('hashchange', function() {
-			activate_tab($(window.location.hash));
+			activate_tab(window.location.hash);
 		});
 
 		$('#profiler_close').click(function() {
@@ -89,6 +103,13 @@ if (jQuery === undefined) {
 			return false;
 		});
 
+		if (window.location.hash === "") {
+			<?php if(\Profiler::$auto_open === true): ?>
+				window.location.hash = "#profiler_tab_console";
+			<?php elseif(is_string(\Profiler::$auto_open)): ?>
+				window.location.hash = "#profiler_tab_console/<?php echo \Profiler::$auto_open; ?>";
+			<?php endif; ?>
+		}
 	});
 
 })(jQuery);
@@ -100,8 +121,18 @@ jQuery.expr[':'].profiler_icontains = function(a, i, m) {
 var profiler_activate_filter = function (table,value,filter) {
 	filter.siblings().removeClass('active');
 	filter.addClass().addClass('active');
-	table.find('tr').removeClass('filter_hidden');;
-	table.find('tr:not(.'+value+')').addClass('filter_hidden');
+	table.find('tr').removeClass('filter_hidden');
+
+	route = window.location.hash.substring(1,window.location.hash.length);
+	route = route.split("/");
+
+	if (value !== undefined && value !== "") {
+		table.find('tr:not(.'+value+')').addClass('filter_hidden');
+		window.location.hash = "#"+route[0]+"/"+value;
+	} else {
+		filters[route[0]] = undefined;
+		window.location.hash = "#"+route[0];
+	}
 }
 
 var profiler_search = function (table,value,filter) {

@@ -450,6 +450,16 @@
   background: #e8fce2;
 }
 
+#fuel_profiler.open .tabs .tab_content table tr.inspect th {
+  background-color: #fafce4;
+}
+#fuel_profiler.open .tabs .tab_content .left-column .filters ul li.inspect div {
+  border-color: #fafce4;
+}
+#fuel_profiler.open .tabs .tab_content .left-column .filters ul li.active.inspect div {
+  background: #fafce4;
+}
+
 #fuel_profiler.open .tabs .tab_content table tr.timer-start th {
   background-color: #e2fcf3;
 }

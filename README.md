@@ -43,14 +43,6 @@ and add the following to your app/config/config.php (you will probably want to d
 
 
 ```php
-Autoloader::add_classes(array(
-	/* ... */
-	'Profiler'	=> PKGPATH.'/fuelphprofiler/classes/profiler.php',
-	'Console' 	=> PKGPATH.'/fuelphprofiler/classes/console.php',
-	/* ... */
-));
-
-```
 return array(
 	/* ... */
 	'profiling' => true,
@@ -140,14 +132,42 @@ API
 ---
 
 ```php
-Profiler::console($text); // log a message
-Profiler::mark($text); // log a point in time after the request
-Profiler::start_timer($id[,$text]); // start a timer, if $text isn't set id will be used
-Profiler::stop_timer($id); // stop a timer, $id must match the corresponding $id of the start_timer call
-Profiler::mark_memory($text); // log a point in time and the current memory usage
-Profiler::log($type,$text[,$time]); // log a message where $type is the group of messages, $text is the message, if $time is not provided the current time will be used, if it is it should be a timestamp in seconds from the start of the request
-Profiler::start($dbname,$sql); // Start timing a database query
-Profiler::stop(); // Stop the last database query timer, you can not start multiple query timers
+\Profiler::console($text[,$auto_open]); // log a message, if $auto_open is set to true the profiler will automatically open and if a single log message type is set to auto open it will filter by that type, defaults to false
+\Profiler::inspect($text[,$auto_open]); // log a message, same as console, but auto open defaults to true
+\Profiler::mark($text); // log a point in time after the request
+\Profiler::start_timer($id[,$text]); // start a timer, if $text isn't set id will be used
+\Profiler::stop_timer($id); // stop a timer, $id must match the corresponding $id of the start_timer call
+\Profiler::mark_memory($text); // log a point in time and the current memory usage
+\Profiler::log($type,$text[,$time[,$auto_open]]); // log a message where $type is the group of messages, $text is the message, if $time is not provided the current time will be used, if it is it should be a timestamp in seconds from the start of the request, if $auto_open is set to true the profiler will automatically open, defaults to false
+\Profiler::start($dbname,$sql); // Start timing a database query
+\Profiler::stop(); // Stop the last database query timer, you can not start multiple query timers
+```
+
+Shorthand
+---------
+
+You can also use the short hand class and methods by adding  the following to your app/bootstrap.php
+
+```php
+Autoloader::add_classes(array(
+	/* ... */
+	'P'	=> PKGPATH.'/fuelphprofiler/classes/p.php',
+	/* ... */
+));
+```
+
+Theses are as follows
+
+```php
+\P::c($text[,$auto_open]); // log a message, if $auto_open is set to true the profiler will automatically open and if a single log message type is set to auto open it will filter by that type, defaults to false
+\P::i($text[,$auto_open]); // log a message, same as console, but auto open defaults to true
+\P::m($text); // log a point in time after the request
+\P::st($id[,$text]); // start a timer, if $text isn't set id will be used
+\P::spt($id); // stop a timer, $id must match the corresponding $id of the start_timer call
+\P::mm($text); // log a point in time and the current memory usage
+\P::l($type,$text[,$time[,$auto_open]]); // log a message where $type is the group of messages, $text is the message, if $time is not provided the current time will be used, if it is it should be a timestamp in seconds from the start of the request, if $auto_open is set to true the profiler will automatically open, defaults to false
+\P::s($dbname,$sql); // Start timing a database query
+\P::sp(); // Stop the last database query timer, you can not start multiple query timers
 ```
 
 Setting app name and version
