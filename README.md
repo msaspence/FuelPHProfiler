@@ -75,6 +75,7 @@ return array(
 			/* ... */
 		)
 		'session_summary' => 'username', // The $_SESSION variable to display in the session tab summary, if the variable is not set will display 'anonymous'. Set to false to display the number of items instead.
+		'inspect_expand_tree' => 10, // The number of properties and values for which inspected objects and arrays should start closed. Set to false to start closed what ever, and true to start opened whatever, defaults to false.
 	),
 	/* ... */
 );
@@ -133,7 +134,7 @@ API
 
 ```php
 \Profiler::console($text[,$auto_open]); // log a message, if $auto_open is set to true the profiler will automatically open and if a single log message type is set to auto open it will filter by that type, defaults to false
-\Profiler::inspect($text[,$auto_open]); // log a message, same as console, but auto open defaults to true
+\Profiler::inspect($text[,$auto_open]); // inspect a variable, if $auto_open is set to true the profiler will automatically open and if a single log message type is set to auto open it will filter by that type, defaults to true
 \Profiler::mark($text); // log a point in time after the request
 \Profiler::start_timer($id[,$text]); // start a timer, if $text isn't set id will be used
 \Profiler::stop_timer($id); // stop a timer, $id must match the corresponding $id of the start_timer call
@@ -160,7 +161,7 @@ Theses are as follows
 
 ```php
 \P::c($text[,$auto_open]); // log a message, if $auto_open is set to true the profiler will automatically open and if a single log message type is set to auto open it will filter by that type, defaults to false
-\P::i($text[,$auto_open]); // log a message, same as console, but auto open defaults to true
+\P::i($text[,$auto_open]); // inspect a variable, if $auto_open is set to true the profiler will automatically open and if a single log message type is set to auto open it will filter by that type, defaults to true
 \P::m($text); // log a point in time after the request
 \P::st($id[,$text]); // start a timer, if $text isn't set id will be used
 \P::spt($id); // stop a timer, $id must match the corresponding $id of the start_timer call

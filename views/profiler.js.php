@@ -76,7 +76,7 @@ var filters = [];
 		}
 
 		fuel_profiler.find('.tab').click(function() {
-			if (window.location.hash == "#"+$(this).attr('id')) {
+			if (window.location.hash.split("/")[0] == "#"+$(this).attr('id')) {
 				window.location.hash = "";
 			} else {
 				window.location.hash = "#"+$(this).attr('id');
@@ -92,7 +92,8 @@ var filters = [];
 		});
 
 		$('#profiler_close').click(function() {
-			fuel_profiler.removeClass('open');
+			// fuel_profiler.removeClass('open');
+			window.location.hash = "";
 		});
 
 		$('ul li.has_nested_items').click(function() {

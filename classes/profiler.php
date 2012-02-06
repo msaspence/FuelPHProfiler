@@ -14,6 +14,8 @@ Autoloader::add_classes(array(
 	'FuelPHProfiler\\Tab\\Request' => __DIR__.'/tab/request.php',
 ));
 
+require_once __DIR__."/../views/branch.php";
+
 class Profiler {
 
 	static public $logs = array();
@@ -123,7 +125,7 @@ class Profiler {
 
 	public static function log($type,$text,$time=null,$auto_open=false)
 	{
-		if ($auto_open === true && is_string(static::$auto_open)) {
+		if ($auto_open === true && is_string(static::$auto_open) && $type != static::$auto_open) {
 			static::$auto_open = true;
 		} elseif ($auto_open === true) {
 			static::$auto_open = $type;

@@ -48,7 +48,13 @@ if (!isset($log)) {
 					<?php if (!isset($filter) || array_search($value['type'],$filter) !== false): ?>
 						<tr class="<?php echo str_replace(" ","-", $value['type']); ?>">
 							<th><?php echo ucfirst(str_replace(" ","&nbsp;",$value['type'])); ?></th>
-							<td><?php echo $value['message']; ?></td>
+							<td>
+								<?php if ($value['type'] == 'inspect') : ?>
+									<ul class="top"><?php profiler_branch(null,$value['message'],0,\Config::get('profiling.inspect_expand_tree',false)); ?></ul>
+								<?php else: ?>
+									<?php echo $value['message']; ?>
+								<?php endif; ?>
+							</td>
 							<td class="data"><?php echo isset($value['time']) ? \Profiler::get_readable_time($value['time']) : ""; ?></td>
 							<td class="data"><?php echo isset($value['data']) ? $value['data'] : (isset($value['memory']) ? \Profiler::get_readable_file_size($value['memory']) : (isset($value['timer']) ? \Profiler::get_readable_time($value['timer']) : "")); ?></td>
 						</tr>
