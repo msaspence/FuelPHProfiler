@@ -183,6 +183,7 @@
   #fuel_profiler #profiler_tab_info {
     min-width: 200px;
     padding-left: 10px;
+    padding-bottom: 4px;
   }
 
   #fuel_profiler #profiler_tab_info.active {

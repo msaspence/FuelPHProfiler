@@ -59,9 +59,9 @@ var filters = [];
 						fuel_profiler.addClass('open');
 					}
 
-					$(tab).addClass('active');
 					$(tab).siblings().removeClass('active');
 					$(".tab_content").removeClass('active');
+					$(tab).addClass('active');
 					$(".tab_content[data-tab="+$(tab).data('tab')+"]").addClass('active');
 					if (route[1] !== undefined) {
 						filters[route[0]] = route[1];
@@ -70,6 +70,7 @@ var filters = [];
 				}
 			} else {
 				fuel_profiler.toggleClass('open');
+				$("#fuel_profiler .tab").removeClass('active');
 			}
 
 		}
