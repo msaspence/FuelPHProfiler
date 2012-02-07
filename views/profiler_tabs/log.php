@@ -22,9 +22,9 @@ if (!isset($log)) {
 		<div class="filters">
 			<h4>Filters</h4>
 			<ul class="filters">
-				<li class="active" onclick="profiler_activate_filter(jQuery('#profiler_tab_content_<?php echo $tab->get_id(); ?> .log table'),'',jQuery(this))"><div><strong>All:</strong> <?php echo count($log); ?> Message<?php echo count($log) == 1 ? "" : "s" ; ?></div></li>
+				<li class="_all active" onclick="window.location.hash = '#profiler_tab_<?php echo $tab->get_id(); ?>/'"><div><strong>All:</strong> <?php echo count($log); ?> Message<?php echo count($log) == 1 ? "" : "s" ; ?></div></li>
 				<?php foreach((isset($filter) ? $filter : \Profiler::get_log_types()) as $value): ?>
-					<li class="<?php echo str_replace(" ","-",$value); ?>" onclick="profiler_activate_filter(jQuery('#profiler_tab_content_<?php echo $tab->get_id(); ?> .log table'),'<?php echo str_replace(" ","-",$value); ?>',jQuery(this))"><div><strong><?php echo ucfirst($value); ?>:</strong> <?php echo count(\Profiler::get_log($value)); ?> Message<?php echo count(\Profiler::get_log($value)) == 1 ? "" : "s" ; ?></div></li>
+					<li class="<?php echo str_replace(" ","-",$value); ?>" onclick="window.location.hash = '#profiler_tab_<?php echo $tab->get_id(); ?>/<?php echo str_replace(" ","-",$value); ?>'"><div><strong><?php echo ucfirst($value); ?>:</strong> <?php echo count(\Profiler::get_log($value)); ?> Message<?php echo count(\Profiler::get_log($value)) == 1 ? "" : "s" ; ?></div></li>
 				<?php endforeach; ?>
 			</ul>
 		</div>

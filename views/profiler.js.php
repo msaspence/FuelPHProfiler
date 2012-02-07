@@ -17,7 +17,7 @@ var filters = [];
 
 		var sheet = document.createElement("style");
 		sheet.setAttribute("type", "text/css");
-		sheet.innerHTML = '<?php 
+		sheet.innerHTML = '<?php
 			echo str_replace(array("\n","'"),"",\View::forge(__DIR__.'/profiler.css')); /* "' */
 			foreach($tabs as $tab) {
 				if (method_exists($tab,"get_css")) {
@@ -52,6 +52,7 @@ var filters = [];
 			tab = "#"+route[0];
 
 			if ($(tab).length) {
+
 				if (route[1] === undefined && filters[route[0]] !== undefined) {
 					window.location.hash = "#"+route[0]+"/"+filters[route[0]];
 				} else {
@@ -65,7 +66,12 @@ var filters = [];
 					$(".tab_content[data-tab="+$(tab).data('tab')+"]").addClass('active');
 					if (route[1] !== undefined) {
 						filters[route[0]] = route[1];
-						profiler_activate_filter(jQuery(".tab_content[data-tab="+$(tab).data('tab')+"] .log table"),route[1],jQuery(".tab_content[data-tab="+$(tab).data('tab')+"] ."+route[1]))
+						if (route[1] !== "") {
+							filter = route[1];
+						} else {
+							filter = "_all";
+						}
+						profiler_activate_filter(jQuery(".tab_content[data-tab="+$(tab).data('tab')+"] .log table"),route[1],jQuery(".tab_content[data-tab="+$(tab).data('tab')+"] ."+filter))
 					}
 				}
 			} else {
@@ -107,9 +113,9 @@ var filters = [];
 
 		if (window.location.hash === "") {
 			<?php if(\Profiler::$auto_open === true): ?>
-				window.location.hash = "#profiler_tab_console";
+				activate_tab(["profiler_tab_console"]);
 			<?php elseif(is_string(\Profiler::$auto_open)): ?>
-				window.location.hash = "#profiler_tab_console/<?php echo \Profiler::$auto_open; ?>";
+				activate_tab("#profiler_tab_console/<?php echo \Profiler::$auto_open; ?>");
 			<?php endif; ?>
 		}
 	});
@@ -130,10 +136,10 @@ var profiler_activate_filter = function (table,value,filter) {
 
 	if (value !== undefined && value !== "") {
 		table.find('tr:not(.'+value+')').addClass('filter_hidden');
-		window.location.hash = "#"+route[0]+"/"+value;
+		// window.location.hash = "#"+route[0]+"/"+value;
 	} else {
 		filters[route[0]] = undefined;
-		window.location.hash = "#"+route[0];
+		// window.location.hash = "#"+route[0];
 	}
 }
 
