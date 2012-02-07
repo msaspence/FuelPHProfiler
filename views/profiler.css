@@ -629,8 +629,8 @@
   }
 
     #fuel_profiler .log table td ul li.has_nested_items li {
-      background-position: 0 9px;
-      padding-top: 6px;
+      background-position: 0 13px;
+      padding-top: 10px;
     }
 
   #fuel_profiler .log table td ul li.has_nested_items.nested_hidden {
@@ -643,7 +643,7 @@
     }
 
       #fuel_profiler .log table td ul li.has_nested_items li.nested_hidden {
-        background-position: 1px 8px;
+        background-position: 1px 12px;
       }
 
       #fuel_profiler .log table td ul li .key {
@@ -655,3 +655,27 @@
         margin-left: 2px;
         margin-right: 5px;
       }
+
+#fuel_profiler .inspect .null {
+  color: #888;
+}
+
+#fuel_profiler .inspect .string,
+#fuel_profiler .inspect .number {
+  color: #208330;
+}
+
+#fuel_profiler .inspect .array {
+  color: #b46c17;
+}
+#fuel_profiler .inspect .boolean {
+  color: #2556a0;
+}
+
+#fuel_profiler .inspect .key {
+  color: #9538a3;
+}
+
+#fuel_profiler .inspect .object {
+  color: #a12a2a;
+}

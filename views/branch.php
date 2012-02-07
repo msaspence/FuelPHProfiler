@@ -7,22 +7,29 @@
 			<?php switch(gettype($item)) {
 				case "string":
 					if (empty($item) && is_string($item)) {
-						echo "<em class='fade'>Empty string</em>";
+						echo "<span class='string'>\"\"</span>";
 					} else {
-						echo '"'.htmlentities($item).'"';
+						echo '<span class="string">"'.htmlentities($item).'"</span>';
 					}
 					break;
 				case "boolean":
+					echo "<span class='boolean'>";
 					echo $item ? "true" : "false";
+					echo "</span>";
 					break;
 				case "array":
-					echo "<em>Array: ".count($item). " item". (count($item) == 1 ? "" : "s")."</em>";
+					echo "<span class='array'>array (".count($item). " item". (count($item) == 1 ? "" : "s").")</span>";
 					break;
 				case "object":
-					echo "<em>".get_class($item)."</em>";
+					echo "<span class='object'>".get_class($item)."</em>";
 					break;
 				case "NULL":
-					echo "<em class='fade'>NULL</em>";
+					echo "<span class='null'>NULL</span>";
+					break;
+				case "integer":
+				case "float":
+				case "double":
+					echo "<span class='number'>$item</span>";
 					break;
 				default:
 					echo $item;
