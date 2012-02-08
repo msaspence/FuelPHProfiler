@@ -37,6 +37,10 @@ if (!isset($log)) {
 		<input class="search" onkeyup="profiler_search(jQuery('#profiler_tab_content_<?php echo $tab->get_id(); ?> .log table'),jQuery(this).val())" />
 	</div>
 
+	<?php if (isset($sidebar)): ?>
+		<?php echo $sidebar; ?>
+	<?php endif; ?>
+
 </div>
 
 <div class="right-column">
