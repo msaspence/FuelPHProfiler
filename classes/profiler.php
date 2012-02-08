@@ -12,6 +12,7 @@ Autoloader::add_classes(array(
 	'FuelPHProfiler\\Tab\\Config' => __DIR__.'/tab/config.php',
 	'FuelPHProfiler\\Tab\\Session' => __DIR__.'/tab/session.php',
 	'FuelPHProfiler\\Tab\\Request' => __DIR__.'/tab/request.php',
+	'Fuel\\Core\\Profiler' => __DIR__.'/core_replacement.php',
 ));
 
 require_once __DIR__."/../views/branch.php";
@@ -192,7 +193,6 @@ class Profiler {
 
 	public static function stop($text=null)
 	{
-		array_push(static::$queries, static::$query);
 		static::$query_count++;
 		$time = (static::$query['time_ep'] - FUEL_START_TIME);
 		$timer = (microtime(true) - static::$query['time_ep']);
@@ -201,7 +201,7 @@ class Profiler {
 			'message'=>static::$query['sql'],
 			'timer'=>$timer,
 		);
-		static::log('query',$log_item, $time);
+		array_push(static::$queries, static::log('query',$log_item, $time));
 	}
 
 
