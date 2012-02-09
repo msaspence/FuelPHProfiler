@@ -13,7 +13,10 @@ Autoloader::add_classes(array(
 	'FuelPHProfiler\\Tab\\Session' => __DIR__.'/tab/session.php',
 	'FuelPHProfiler\\Tab\\Request' => __DIR__.'/tab/request.php',
 	'Fuel\\Core\\Profiler' => __DIR__.'/core_replacement.php',
+	'Controller_FuelPHProfilerAjax' => __DIR__.'/controller/ajax.php',
 ));
+
+\Router::add("_fuel_profiler/latest_grind","fuelPHProfilerAjax/latest_grind");
 
 require_once __DIR__."/../views/branch.php";
 

@@ -13,7 +13,6 @@ class Speed extends Tab
 
 	public function get_data()
 	{
-		$return = array();
 		return array(
 			'log' => \Profiler::get_combined_log(),
 			'overviews' => array(
@@ -21,9 +20,8 @@ class Speed extends Tab
 				"Max time: ".\Profiler::get_readable_time($this->get_time_allowed()),
 			),
 			'filter' => array('split','timer start','timer stop'),
+			'sidebar' => \View::forge(\Finder::search('views', PKGPATH."/FuelPHProfiler/views/profiler_tabs/speed_sidebar.php")),
 		);
-
-		return $return;
 	}
 
 	public function get_summary()
