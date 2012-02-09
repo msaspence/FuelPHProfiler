@@ -28,7 +28,7 @@ abstract class Tab implements TabInterface {
 		$template = \Config::get('profiling.views.'.get_class($this),$this->get_template());
 
 		if (($path = \Finder::search('views', $template)) === false) {
-			return false;
+			throw new \FuelException('The requested view could not be found: '.\Fuel::clean_path($path));
 		} else {
 			return \View::forge($path,array_merge($this->get_data(),array('tab'=>$this)),false);
 		}
@@ -42,7 +42,7 @@ abstract class Tab implements TabInterface {
 
 	function get_template()
 	{
-		return PKGPATH."/FuelPHProfiler/views/".$this->template;
+		return PKGPATH."fuelphprofiler/views/".$this->template;
 	}
 
 }
