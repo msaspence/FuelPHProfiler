@@ -12,7 +12,7 @@ Autoloader::add_classes(array(
 	'FuelPHProfiler\\Tab\\Config' => __DIR__.'/tab/config.php',
 	'FuelPHProfiler\\Tab\\Session' => __DIR__.'/tab/session.php',
 	'FuelPHProfiler\\Tab\\Request' => __DIR__.'/tab/request.php',
-	'Fuel\\Core\\Profiler' => __DIR__.'/core_replacement.php',
+	'Fuel\\Core\\Profiler' => __DIR__.'/fuelcoreprofiler.php',
 ));
 
 require_once __DIR__."/../views/branch.php";
