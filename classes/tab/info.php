@@ -47,10 +47,10 @@ class Info extends Tab
 
 		$return['app_info'] = array();
 		if (defined('SITE_VERSION')) {
-			$return['app_info']['site_version'] = SITE_VERSION;
+			$return['app_info']['site_version'] = APP_VERSION;
 		}
 		if (defined('SITE_')) {
-			$return['app_info']['site_version'] = SITE_VERSION;
+			$return['app_info']['site_version'] = APP_VERSION;
 		}
 		$return['app_info']['env'] = \Fuel::$env;
 		$return['app_info']['fuel_version'] = \Fuel::VERSION;
@@ -63,8 +63,8 @@ class Info extends Tab
 	public function get_summary()
 	{
 		$return = \Fuel::VERSION;
-		if (defined('SITE_VERSION')) {
-			$return .= " : ".SITE_VERSION;
+		if (defined('APP_VERSION')) {
+			$return .= " : ".APP_VERSION;
 		}
 		$return .= " : ".\Fuel::$env;
 		return $return;

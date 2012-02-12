@@ -1,7 +1,7 @@
                                                                                                  	/* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
  * ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-#fuel_profiler h1, #fuel_profiler h2, #fuel_profiler h3, #fuel_profiler h4, #fuel_profiler h5, #fuel_profiler h6, #fuel_profiler p, #fuel_profiler blockquote, #fuel_profiler pre, #fuel_profiler a, abbr, #fuel_profiler acronym, #fuel_profiler address, #fuel_profiler cite, #fuel_profiler code, #fuel_profiler del, #fuel_profiler dfn, #fuel_profiler em, #fuel_profiler img, #fuel_profiler q, #fuel_profiler s, #fuel_profiler samp, #fuel_profiler small, #fuel_profiler strike, #fuel_profiler strong, #fuel_profiler sub, #fuel_profiler sup, #fuel_profiler tt, #fuel_profiler var, #fuel_profiler dd, #fuel_profiler dl, #fuel_profiler dt, #fuel_profiler li, #fuel_profiler ol, #fuel_profiler ul, #fuel_profiler fieldset, #fuel_profiler form, #fuel_profiler label, #fuel_profiler legend, #fuel_profiler button, #fuel_profiler table, #fuel_profiler caption, #fuel_profiler tbody, #fuel_profiler tfoot, #fuel_profiler thead, #fuel_profiler tr, #fuel_profiler input, #fuel_profiler th, #fuel_profiler td , #fuel_profiler div { margin: 0; padding: 0; border: 0; font-weight: normal; font-style: normal; font-size: 100%; line-height: 1; font-family: inherit; font-size: 1em; color: inherit; float: none;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 0px; }
+#fuel_profiler h1, #fuel_profiler h2, #fuel_profiler h3, #fuel_profiler h4, #fuel_profiler h5, #fuel_profiler h6, #fuel_profiler p, #fuel_profiler blockquote, #fuel_profiler pre, #fuel_profiler a, abbr, #fuel_profiler acronym, #fuel_profiler address, #fuel_profiler cite, #fuel_profiler code, #fuel_profiler del, #fuel_profiler dfn, #fuel_profiler em, #fuel_profiler img, #fuel_profiler q, #fuel_profiler s, #fuel_profiler samp, #fuel_profiler small, #fuel_profiler strike, #fuel_profiler strong, #fuel_profiler sub, #fuel_profiler sup, #fuel_profiler tt, #fuel_profiler var, #fuel_profiler dd, #fuel_profiler dl, #fuel_profiler dt, #fuel_profiler li, #fuel_profiler ol, #fuel_profiler ul, #fuel_profiler fieldset, #fuel_profiler form, #fuel_profiler label, #fuel_profiler legend, #fuel_profiler button, #fuel_profiler table, #fuel_profiler caption, #fuel_profiler tbody, #fuel_profiler tfoot, #fuel_profiler thead, #fuel_profiler tr, #fuel_profiler input, #fuel_profiler th, #fuel_profiler td , #fuel_profiler div { margin: 0; padding: 0; border: 0; font-weight: normal; font-style: normal; font-size: 100%; line-height: 1.4; font-family: inherit; font-size: 1em; color: inherit; float: none;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 0px; }
 #fuel_profiler table { border-collapse: collapse; border-spacing: 0; }
 #fuel_profiler ol,#fuel_profiler  ul { list-style: none; }
 #fuel_profiler q:before, #fuel_profiler q:after, #fuel_profiler blockquote:before, #fuel_profiler blockquote:after { content: ""; }
@@ -629,10 +629,14 @@
     cursor: pointer;
   }
 
-    #fuel_profiler .log table td ul li.has_nested_items li {
-      background-position: 0 13px;
-      padding-top: 10px;
+    #fuel_profiler .log table td ul li.has_nested_items ul {
+      cursor: text;
     }
+
+      #fuel_profiler .log table td ul li.has_nested_items li {
+        background-position: 0 13px;
+        padding-top: 10px;
+      }
 
   #fuel_profiler .log table td ul li.has_nested_items.nested_hidden {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAJCAYAAAD+WDajAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpDODFFRDREQjQ4RTUxMUUxQjFCRUYwMjNEODc0NzlCMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDODFFRDREQzQ4RTUxMUUxQjFCRUYwMjNEODc0NzlCMiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkM4MUVENEQ5NDhFNTExRTFCMUJFRjAyM0Q4NzQ3OUIyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkM4MUVENERBNDhFNTExRTFCMUJFRjAyM0Q4NzQ3OUIyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+bf0HNAAAAGZJREFUeNpizM3NTWZgYJjLgAUwAfEcID4PxPbYJEHAAIgPAPEKIJZDl4SBcCC+AcQtQMzDgsUqTiCuBmJFJiySj4A4FIijkXV+B+IOIO6GshlgksuAuBKqCw5Akg5AfBCbPwECDAA9TA+6/U8uKQAAAABJRU5ErkJggg==);

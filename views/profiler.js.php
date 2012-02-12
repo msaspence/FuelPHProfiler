@@ -89,7 +89,7 @@ var filters = [];
 			}
 		});
 
-		if (window.location.hash !== "") {
+		if (window.location.hash !== "" && window.location.hash !== "#") {
 			activate_tab(window.location.hash);
 		}
 
