@@ -193,15 +193,20 @@ class Profiler {
 
 	public static function stop($text=null)
 	{
-		static::$query_count++;
 		$time = (static::$query['time_ep'] - FUEL_START_TIME);
 		$timer = (microtime(true) - static::$query['time_ep']);
-		static::$query_time += $timer;
+		static::query(static::$query['sql'],$timer);
+	}
+
+	public static function query($text,$time)
+	{
+		static::$query_count++;
+		static::$query_time += $time;
 		$log_item = array(
-			'message'=>static::$query['sql'],
-			'timer'=>$timer,
+			'message'=>$text,
+			'timer'=>$time,
 		);
-		array_push(static::$queries, static::log('query',$log_item, $time));
+		array_push(static::$queries, static::log('query',$log_item, $time+microtime()));
 	}
 
 
