@@ -142,7 +142,7 @@ class Profiler {
 			'message'=>$text,
 		);
 
-		if (is_array($text)) {
+		if (is_array($text) && $type!=='inspect') {
 			$log_item = array_merge($log_item,$text);
 		}
 
@@ -256,7 +256,7 @@ class Profiler {
 		$ret = $time;
 		$formatter = 0;
 		$formats = array('ms', 's', 'm');
-		if($time >= 1000 && $time < 60000) {
+		if($time >= 5000 && $time < 60000) {
 			$formatter = 1;
 			$ret = ($time / 1000);
 		}
