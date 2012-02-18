@@ -256,15 +256,18 @@ class Profiler {
 		$ret = $time;
 		$formatter = 0;
 		$formats = array('ms', 's', 'm');
-		if($time >= 5000 && $time < 60000) {
+		if($time >= 1000 && $time < 60000) {
 			$formatter = 1;
 			$ret = ($time / 1000);
-		}
-		if($time >= 60000) {
+			$ret = trim(number_format($ret,2,'.',''),"0\.");
+		} elseif($time >= 60000) {
 			$formatter = 2;
 			$ret = ($time / 1000) / 60;
+			$ret = trim(number_format($ret,2,'.',''),"0\.");
+		} else {
+			$ret = number_format($ret,0,'.','');
 		}
-		$ret = number_format($ret,0,'.','') . '&nbsp;' . $formats[$formatter];
+		$ret = $ret . '&nbsp;' . $formats[$formatter];
 		return $ret;
 	}
 
