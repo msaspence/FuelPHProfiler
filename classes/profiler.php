@@ -110,7 +110,14 @@ class Profiler {
 			static::$tabs['memory']->set_memory_peak_usage(memory_get_peak_usage());
 		}
 		$template = \Config::get('profiling.template', PKGPATH.'fuelphprofiler/views/profiler.php');
-		$output = \View::forge($template,array('tabs'=>array_reverse(static::$tabs),'mode'=>\Config::get('profiling.mode','minimal')),false);
+
+		if (in_array(\Config::get('profiling.mode','minimal'), array('bar','minimal','icon','hidden'))) {
+			$mode = \Config::get('profiling.mode','minimal');
+		} else {
+			$mode = 'minimal';
+		}
+
+		$output = \View::forge($template,array('tabs'=>array_reverse(static::$tabs),'mode'=>$mode),false);
 		return $output;
 	}
 

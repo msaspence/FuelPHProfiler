@@ -717,6 +717,7 @@
   border-top-right-radius: 4px;
   padding: 6px 10px 6px 10px;
   font-size: 14px;
+  cursor: pointer;
 }
 
 #fuel_profiler.minimal > .minimal:hover {
@@ -743,7 +744,9 @@
   margin-right: 0;
 }
 
-
+#fuel_profiler.hidden > .icon,
+#fuel_profiler.hidden > .minimal,
+#fuel_profiler.hidden > .bar,
 #fuel_profiler.bar > .icon,
 #fuel_profiler.bar > .minimal,
 #fuel_profiler.icon > .bar,
