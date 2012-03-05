@@ -10,15 +10,15 @@
 		<input id="profiler_tab_info_search" class="search" />
 		<script type="text/javascript">
 		var rows;
-			jQuery("#profiler_tab_info_search").keyup(function() {
+			FuelPHProfiler.jQuery("#profiler_tab_info_search").keyup(function() {
 
-				jQuery.expr[':'].Contains = function(a, i, m) {
-					return jQuery(a).text().toUpperCase()
+				FuelPHProfiler.jQuery.expr[':'].Contains = function(a, i, m) {
+					return FuelPHProfiler.jQuery(a).text().toUpperCase()
 						.indexOf(m[3].toUpperCase()) >= 0;
 				};
 
-				value = jQuery(this).val();
-				content = jQuery('#profiler_tab_info_phpinfo')
+				value = FuelPHProfiler.jQuery(this).val();
+				content = FuelPHProfiler.jQuery('#profiler_tab_info_phpinfo')
 				content.find('tr,h3').hide();
 				rows = content.find("tr:Contains('"+value+"')");
 				rows.show();

@@ -34,7 +34,7 @@ if (!isset($log)) {
 
 	<div class="search">
 		<h4>Search</h4>
-		<input class="search" onkeyup="profiler_search(jQuery('#profiler_tab_content_<?php echo $tab->get_id(); ?> .log table'),jQuery(this).val())" />
+		<input class="search" onkeyup="profiler_search(FuelPHProfiler.jQuery('#profiler_tab_content_<?php echo $tab->get_id(); ?> .log table'),FuelPHProfiler.jQuery(this).val())" />
 	</div>
 
 </div>

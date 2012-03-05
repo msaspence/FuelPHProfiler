@@ -11,7 +11,7 @@
 
 	<div class="search">
 		<h4>Search</h4>
-		<input class="search" onkeyup="profiler_search(jQuery('#profiler_tab_content_<?php echo $tab->get_id(); ?> .nested .top'),jQuery(this).val())" />
+		<input class="search" onkeyup="profiler_search(FuelPHProfiler.jQuery('#profiler_tab_content_<?php echo $tab->get_id(); ?> .nested .top'),FuelPHProfiler.jQuery(this).val())" />
 	</div>
 
 </div>

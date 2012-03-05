@@ -57,6 +57,7 @@ var filters = [];
 				} else {
 					if ($(tab).hasClass('active') || !fuel_profiler.hasClass('open')) {
 						fuel_profiler.addClass('open');
+						fuel_profiler.removeClass('closed');
 					}
 
 					$(tab).siblings().removeClass('active');
@@ -70,13 +71,16 @@ var filters = [];
 						} else {
 							filter = "_all";
 						}
-						profiler_activate_filter(jQuery(".tab_content[data-tab="+$(tab).data('tab')+"] .log table"),route[1],jQuery(".tab_content[data-tab="+$(tab).data('tab')+"] ."+filter))
+						profiler_activate_filter($(".tab_content[data-tab="+$(tab).data('tab')+"] .log table"),route[1],$(".tab_content[data-tab="+$(tab).data('tab')+"] ."+filter))
 					}
 				}
 			} else {
 				fuel_profiler.toggleClass('open');
+				fuel_profiler.toggleClass('closed');
 				$("#fuel_profiler .tab").removeClass('active');
 			}
+
+			calculate_details_height();
 
 		}
 
@@ -97,12 +101,15 @@ var filters = [];
 		});
 
 		$('#profiler_close').click(function() {
-			// fuel_profiler.removeClass('open');
-			window.location.hash = "";
+			if (window.location.hash == "") {
+				activate_tab("");
+			} else {
+				window.location.hash = "";
+			}
 		});
 
 		$('ul li.has_nested_items').click(function() {
-			jQuery(this).toggleClass('nested_hidden');
+			$(this).toggleClass('nested_hidden');
 			return false;
 		});
 
@@ -122,7 +129,7 @@ var filters = [];
 })(FuelPHProfiler.jQuery);
 
 FuelPHProfiler.jQuery.expr[':'].profiler_icontains = function(a, i, m) {
-	return jQuery(a).text().toUpperCase()
+	return FuelPHProfiler.jQuery(a).text().toUpperCase()
 		.indexOf(m[3].toUpperCase()) >= 0;
 };
 var profiler_activate_filter = function (table,value,filter) {

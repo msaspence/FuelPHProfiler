@@ -56,6 +56,7 @@ Configuring
 return array(
 	/* ... */
 	'profiling' => array( // Whether to enable profiling defaults to false
+		'mode' => 'minimal', // The initial display mode for the profiler, minimal is the default and is a small tab with execution time and the number of quries this is the default, bar is a 76px pixel bar with summaries for each tab, icon is just a small tab with the fuel icon on it
 		'tabs' => array( // An array of tab classes to display, in order. Implementing this will prevent other packages' profiler tabs from automatically appearing and you will have to add them to this array manually.
 			'FuelPHProfiler\Tab\Info', // Displays PHP, App, FuelPHP version and env in summary. Displays searchable result of phpinfo() in content.
 			'FuelPHProfiler\Tab\Console', // Displays combined output of profiler logs.
