@@ -9,10 +9,20 @@
  * @package  app
  * @extends  Controller
  */
+
 class Controller_FuelPHProfilerAjax extends Controller
 {
 	public function action_latest_grind()
 	{
-		return "hello";
+		$_GET['op'] = "function_list";
+		$_GET['dataFile'] = 0;
+		$_GET['showFraction'] = 1;
+		$_GET['hideInternals'] = 0;
+		$_GET['costFormat'] = 'usec';
+
+		// @todo think about removing at some point
+		$_SERVER['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
+
+		require_once __DIR__."/../../vendor/webgrind/ajax.php";
 	}
 }

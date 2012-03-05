@@ -108,6 +108,7 @@
   display: block !important;
 	position: fixed;
   z-index: 100000000000000000000000000;
+  font-family: Helvetica, sans;
 	bottom: 0;
 	left: 0;
 	right: 0;

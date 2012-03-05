@@ -97,7 +97,8 @@ Where $tab_class is a string of a class name to instantiate for the tab. The cla
  * output() - should return a string to be used for the content of the tab
 
 The tab may also implement:
- * get_css() - should return a string off css, this css will affect the entire page so all selectors should be prefixed with "#fuel_profiler #profiler_tab_content_<return value of get_id>"
+ * get_css() - should return a string of css, this css will affect the entire page so all selectors should be prefixed with "#fuel_profiler #profiler_tab_content_<return value of get_id>"
+ * get_js() - should return a string of javascript
  * get_icon() - should return a string which is a data uri of a 16x16 image to be used as the tabs icon
 
 You may wish to use either of the resuable tabs views that FuelPHProfiler provides, the tree view (as used by the request, session and config tabs) or the log view (as used by the console, speed, queries and memory tabs). To do this you should extend FuelPHProfiler\Tab which implements all of the methods required by FuelPHProfiler\TabInterface, instead you should set $title, $id, $icon, $summary as properties on your class. To choose which view to use you should set the $template property to either 'profiler_tabs/tree.php' or 'profiler_tabs/log.php'. To pass data to the view you should implement get_data() and it should return an array with the following key values:

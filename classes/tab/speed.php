@@ -49,4 +49,9 @@ class Speed extends Tab
 		return ini_get("max_execution_time");
 	}
 
+	public function get_js()
+	{
+		return require __DIR__."/../../views/profiler_tabs/speed.js.php";
+	}
+
 }
