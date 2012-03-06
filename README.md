@@ -16,7 +16,7 @@ FuelPHProfiler aims to add the following improvements:
  * Overidable views - App developers can override the default tabs themes with their own output
  * Search and filter - Search outputs in the client using JavaScript
  * Stays open - Open tabs are track using the url hash, so refreshing the page will keep your position
- * Hotkey - Open (and close) the profiler with ctrl+alt+p, can be customised with profiling.hotkey config options
+ * Hotkey - Open (and close) the profiler with ctrl+shift+p, can be customised with profiling.hotkey config options
 
 Requirements
 ------------
