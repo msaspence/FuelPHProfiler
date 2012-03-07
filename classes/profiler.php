@@ -103,6 +103,15 @@ class Profiler {
 
 	static public function output()
 	{
+		if (\Config::get('profiling.allowed_ips',  array('127.0.0.1')))
+		{
+			$allowed_ips = \Config::get('profiling.allowed_ips', array('127.0.0.1'));
+			if ( ! in_array(\Input::server('REMOTE_ADDR'), $allowed_ips))
+			{
+				return;
+			}
+		}
+		
 		if (isset(static::$tabs['speed'])) {
 			static::$tabs['speed']->set_end_time(microtime(true));
 		}
