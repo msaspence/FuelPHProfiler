@@ -74,10 +74,18 @@ return array(
 		'disable' => array( // An array of tabs to disable, use this to control visible tabs with out worrying about custom package tabs appearing in the profiler
 			/* ... */
 		),
+		
+		/*
+		 * Allowed IPs who can view the profiler
+		 */
+		'allowed_ips' => array(
+			'127.0.0.1',
+		),
+		
 		'template' => PKGPATH.'fuelphprofiler/views/profiler.php', // Path to the main profile template file to be inserted before the closing body tag.
 		'views' => array ( // An array of view files to override the view files for each tab where the key is the tab class and the value is the file name inside your app's view dir
 			/* ... */
-		)
+		),
 		'session_summary' => 'username', // The $_SESSION variable to display in the session tab summary, if the variable is not set will display 'anonymous'. Set to false to display the number of items instead.
 		'inspect_expand_tree' => 10, // The number of properties and values for which inspected objects and arrays should start closed. Set to false to start closed what ever, and true to start opened whatever, defaults to false.
 	),
