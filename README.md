@@ -51,6 +51,18 @@ return array(
 );
 ```
 
+If you need access a the profiler from outside of localhost you can manage the IP's are allowed to access it, by default is only allowed 127.0.0.1
+
+
+```php
+/*
+ * Allowed IPs who can view the profiler
+ */
+	'allowed_ips' => array(
+		'127.0.0.1',
+	),
+```
+
 Configuring
 ------------
 

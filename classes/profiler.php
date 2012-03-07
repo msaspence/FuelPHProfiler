@@ -105,7 +105,7 @@ class Profiler {
 	{
 		if (\Config::get('profiling.allowed_ips', false))
 		{
-			$allowed_ips = \Config::get('profiling.allowed_ips', false);
+			$allowed_ips = \Config::get('profiling.allowed_ips', array('127.0.0.1'));
 			if ( ! in_array(\Input::server('REMOTE_ADDR'), $allowed_ips))
 			{
 				return;
