@@ -79,12 +79,14 @@ class Profiler {
 
 	static public function stop_timer($id)
 	{
-		$start = static::$timers[$id];
-		$log_item = array(
-			"timer" => microtime(true)-$start,
-			"message" => "Stop: ".static::$timers_text[$id]
-		);
-		static::log('timer stop',$log_item);
+		if (isset(static::$timers[$id])) {
+			$start = static::$timers[$id];
+			$log_item = array(
+				"timer" => microtime(true)-$start,
+				"message" => "Stop: ".static::$timers_text[$id]
+			);
+			static::log('timer stop',$log_item);
+		}
 	}
 
 	static public function mark_memory($object=false, $text = 'Memory usage')
