@@ -16,7 +16,7 @@ FuelPHProfiler aims to add the following improvements:
  * Overidable views - App developers can override the default tabs themes with their own output
  * Search and filter - Search outputs in the client using JavaScript
  * Stays open - Open tabs are track using the url hash, so refreshing the page will keep your position
- * Hotkey - Open (and close) the profiler with ctrl+alt+p, can be customised with profiling.hotkey config options
+ * Hotkey - Open (and close) the profiler with ctrl+shift+p, can be customised with profiling.hotkey config options
 
 Requirements
 ------------
@@ -49,6 +49,19 @@ return array(
 	'profiling' => true,
 	/* ... */
 );
+```
+
+If you need access a the profiler from outside of localhost you can manage the IP's are allowed to access it, by default is only allowed 127.0.0.1
+
+
+```php
+/*
+ * Allowed IPs who can view the profiler
+ */
+	'allowed_ips' => array(
+		'127.0.0.1',
+	),
+```
 
 Configuring
 ------------
@@ -73,10 +86,18 @@ return array(
 		'disable' => array( // An array of tabs to disable, use this to control visible tabs with out worrying about custom package tabs appearing in the profiler
 			/* ... */
 		),
+		
+		/*
+		 * Allowed IPs who can view the profiler
+		 */
+		'allowed_ips' => array(
+			'127.0.0.1',
+		),
+		
 		'template' => PKGPATH.'fuelphprofiler/views/profiler.php', // Path to the main profile template file to be inserted before the closing body tag.
 		'views' => array ( // An array of view files to override the view files for each tab where the key is the tab class and the value is the file name inside your app's view dir
 			/* ... */
-		)
+		),
 		'session_summary' => 'username', // The $_SESSION variable to display in the session tab summary, if the variable is not set will display 'anonymous'. Set to false to display the number of items instead.
 		'inspect_expand_tree' => 10, // The number of properties and values for which inspected objects and arrays should start closed. Set to false to start closed what ever, and true to start opened whatever, defaults to false.
 	),
